@@ -1,0 +1,18 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:lightningQuickAction"  access="global">
+    <aura:attribute name="variant" type="String" default="linear"/>
+    <aura:attribute name="hideUpdateButton" type="Boolean" default="false"/>
+    <force:recordData aura:id="recordHandler" fields="Id" recordId="{!v.recordId}" targetError="{!v.recordError}"
+        recordUpdated="{!c.handleRecordUpdated}" />
+    <aura:attribute name="recordSaveError" type="String" default="" />
+    <aura:attribute name="strRecId" type="String" />
+    <lightning:overlayLibrary aura:id="overlayLibDemo"/>
+
+    <div>
+    <lightning:button variant="brand" label="Assign Task" title="Brand action" onclick="{!c.handleShowModal}" />
+    <lightning:path aura:id="path" recordId="{!v.recordId}"
+    variant="{!v.variant}"
+    hideUpdateButton="{!v.hideUpdateButton}"
+    onselect="{!c.handleSelect}"
+    />
+</div>
+</aura:component>
